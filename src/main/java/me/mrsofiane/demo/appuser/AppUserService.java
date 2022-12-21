@@ -2,7 +2,6 @@ package me.mrsofiane.demo.appuser;
 
 import lombok.AllArgsConstructor;
 import me.mrsofiane.demo.email.EmailSender;
-import me.mrsofiane.demo.registration.RegistrationService;
 import me.mrsofiane.demo.registration.token.ConfirmationToken;
 import me.mrsofiane.demo.registration.token.ConfirmationTokenService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -22,7 +20,7 @@ public class AppUserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private  final ConfirmationTokenService confirmationTokenService;
+    private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
 
     @Override

@@ -1,8 +1,6 @@
 package me.mrsofiane.demo.registration.token;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import me.mrsofiane.demo.appuser.AppUser;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,7 +12,7 @@ public class ConfirmationTokenService {
 
     private final ConfirmationTokenRepository confirmationTokenRepository;
 
-    public void saveConfirmationToken(ConfirmationToken token){
+    public void saveConfirmationToken(ConfirmationToken token) {
         confirmationTokenRepository.save(token);
     }
 
