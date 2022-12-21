@@ -4,6 +4,7 @@ import me.mrsofiane.demo.appuser.AppUserService;
 import me.mrsofiane.demo.jwt.JwtTokenVerifier;
 import me.mrsofiane.demo.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -16,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 
 @EnableWebSecurity
+@Configuration
 public class WebSecurityConf {
 
     private final JwtTokenVerifier jwtTokenVerifier;
@@ -33,8 +35,8 @@ public class WebSecurityConf {
         return http
                 .csrf(csrf -> csrf.disable())
 
-                .authorizeRequests(authorize -> {
-                    authorize.antMatchers("/api/v*/registration/**").permitAll()
+                .authorizeHttpRequests(authorize -> {
+                    authorize.requestMatchers("/api/v*/registration/**").permitAll()
                             .anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
